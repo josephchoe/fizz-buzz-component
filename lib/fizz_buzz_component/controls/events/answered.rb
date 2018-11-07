@@ -48,6 +48,10 @@ module FizzBuzzComponent
             Answered.example(answer: answer, counter: counter, position: position)
           end
 
+          def self.position
+            0
+          end
+
           def self.answer
             '1'
           end

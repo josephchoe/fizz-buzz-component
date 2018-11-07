@@ -42,6 +42,20 @@ module FizzBuzzComponent
         def self.counter
           11
         end
+
+        module Initial
+          def self.example
+            Answered.example(answer: answer, counter: counter, position: position)
+          end
+
+          def self.answer
+            '1'
+          end
+
+          def self.counter
+            1
+          end
+        end
       end
     end
   end

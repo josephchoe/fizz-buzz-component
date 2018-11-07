@@ -5,13 +5,14 @@ module FizzBuzzComponent
         def self.example(game_id: nil, time: nil, processed_time: nil, previous_message: nil, global_position: nil)
           game_id ||= Game.id
           time ||= Time::Effective.example
+          processed_time ||= Time::Processed.example
 
           previous_message ||= Message.example
 
           position = Position::Initial.example
           global_position ||= Position::Global.example
 
-          stream_name = StreamName.example(game_id: game_id)
+          stream_name = StreamName::Game.example(game_id: game_id)
 
           initiated = Messages::Events::Initiated.new
 

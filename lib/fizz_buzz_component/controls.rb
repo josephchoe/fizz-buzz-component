@@ -6,6 +6,8 @@ require 'fizz_buzz_component/controls/message'
 require 'fizz_buzz_component/controls/position'
 require 'fizz_buzz_component/controls/time'
 
+require 'fizz_buzz_component/controls/stream_name'
+
 require 'fizz_buzz_component/controls/counter'
 
 require 'fizz_buzz_component/controls/game'
@@ -13,3 +15,4 @@ require 'fizz_buzz_component/controls/game'
 require 'fizz_buzz_component/controls/events/initiated'
 require 'fizz_buzz_component/controls/events/answered'
 require 'fizz_buzz_component/controls/events/answer_rejected'
+require 'fizz_buzz_component/controls/events/finished'

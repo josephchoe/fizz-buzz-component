@@ -2,7 +2,7 @@ module FizzBuzzComponent
   module Controls
     module Events
       module AnswerRejected
-        def self.example(answer: nil, counter: nil, game_id: nil, time: nil, processed_time: nil, previous_message: nil, position: nil, global_position: nil)
+        def self.example(answer: nil, counter: nil, game_id: nil, time: nil, previous_message: nil, position: nil, global_position: nil)
           answer ||= self.answer
           counter ||= Counter.example
           game_id ||= Game.id
@@ -13,23 +13,24 @@ module FizzBuzzComponent
           position ||= Position.example
           global_position ||= Position::Global.example
 
-          stream_name = StreamName.example(game_id: game_id)
+          stream_name = StreamName::Game.example(game_id: game_id)
 
-          initiated = Messages::Events::Initiated.new
+          answer_rejected = Messages::Events::AnswerRejected.new
 
-          initiated.game_id = game_id
-          initiated.time = time
-          initiated.processed_time = processed_time
+          answer_rejected.game_id = game_id
+          answer_rejected.answer = answer
+          answer_rejected.counter = counter
+          answer_rejected.time = time
 
-          initiated.metadata.stream_name = stream_name
-          initiated.metadata.position = position
-          initiated.metadata.global_position = global_position
+          answer_rejected.metadata.stream_name = stream_name
+          answer_rejected.metadata.position = position
+          answer_rejected.metadata.global_position = global_position
 
           unless previous_message.nil?
-            initiated.metadata.follow(previous_message.metadata)
+            answer_rejected.metadata.follow(previous_message.metadata)
           end
 
-          initiated
+          answer_rejected
         end
 
         def self.answer

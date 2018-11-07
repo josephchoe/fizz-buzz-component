@@ -7,29 +7,32 @@ module FizzBuzzComponent
           counter ||= self.counter
           game_id ||= Game.id
           time ||= Time::Effective.example
+          processed_time ||= Time::Processed.example
 
           previous_message ||= Message.example
 
           position ||= Position.example
           global_position ||= Position::Global.example
 
-          stream_name = StreamName.example(game_id: game_id)
+          stream_name = StreamName::Game.example(game_id: game_id)
 
-          initiated = Messages::Events::Initiated.new
+          answered = Messages::Events::Answered.new
 
-          initiated.game_id = game_id
-          initiated.time = time
-          initiated.processed_time = processed_time
+          answered.game_id = game_id
+          answered.answer = answer
+          answered.counter = counter
+          answered.time = time
+          answered.processed_time = processed_time
 
-          initiated.metadata.stream_name = stream_name
-          initiated.metadata.position = position
-          initiated.metadata.global_position = global_position
+          answered.metadata.stream_name = stream_name
+          answered.metadata.position = position
+          answered.metadata.global_position = global_position
 
           unless previous_message.nil?
-            initiated.metadata.follow(previous_message.metadata)
+            answered.metadata.follow(previous_message.metadata)
           end
 
-          initiated
+          answered
         end
 
         def self.answer

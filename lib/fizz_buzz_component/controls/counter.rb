@@ -2,18 +2,18 @@ module FizzBuzzComponent
   module Controls
     module Counter
       def self.example
-        11
+        Answer.counter
       end
 
       module Initial
         def self.example
-          1
+          Answer::Initial.counter
         end
       end
 
       module Final
         def self.example
-          100
+          Answer::Final.counter
         end
       end
     end

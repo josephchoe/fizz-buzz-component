@@ -36,11 +36,11 @@ module FizzBuzzComponent
         end
 
         def self.answer
-          '11'
+          Answer.example
         end
 
         def self.counter
-          11
+          Answer.counter
         end
 
         module Initial
@@ -53,11 +53,11 @@ module FizzBuzzComponent
           end
 
           def self.answer
-            '1'
+            Answer::Initial.example
           end
 
           def self.counter
-            1
+            Answer::Initial.counter
           end
         end
       end

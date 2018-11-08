@@ -34,11 +34,11 @@ module FizzBuzzComponent
         end
 
         def self.answer
-          '11'
+          Answer::Incorrect.example
         end
 
         def self.counter
-          11
+          Answer::Incorrect.counter
         end
       end
     end

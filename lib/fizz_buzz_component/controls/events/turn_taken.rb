@@ -60,6 +60,20 @@ module FizzBuzzComponent
             Answer::Initial.counter
           end
         end
+
+        module Final
+          def self.example
+            TurnTaken.example(counter: counter, answer: answer)
+          end
+
+          def self.answer
+            Answer::Final.example
+          end
+
+          def self.counter
+            Answer::Final.counter
+          end
+        end
       end
     end
   end

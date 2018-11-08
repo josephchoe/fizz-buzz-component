@@ -15,6 +15,7 @@ module FizzBuzzComponent
 
       def configure(session: nil)
         Clock::UTC.configure(self)
+        Store.configure(self)
         Messaging::Postgres::Write.configure(self, session: session)
       end
 

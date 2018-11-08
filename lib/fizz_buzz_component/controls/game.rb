@@ -33,6 +33,16 @@ module FizzBuzzComponent
         end
       end
 
+      module Over
+        def self.example
+          Game.example(counter: counter)
+        end
+
+        def self.counter
+          Counter::Final.example
+        end
+      end
+
       module Ended
         def self.example
           ended_time = Time::Effective::Raw.example

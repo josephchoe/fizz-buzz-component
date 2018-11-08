@@ -11,7 +11,7 @@ module FizzBuzzComponent
       turn_taken_time_iso8601 = turn_taken.time
       turn_taken_time = Clock.parse(turn_taken_time_iso8601)
 
-      game.take_turn(counter, turn_taken_time)
+      game.take_turn(turn_taken_time)
     end
 
     apply GameEnded do |game_ended|

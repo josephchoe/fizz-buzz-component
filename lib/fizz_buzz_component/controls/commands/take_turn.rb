@@ -52,6 +52,16 @@ module FizzBuzzComponent
             Answer::Initial.example
           end
         end
+
+        module Incorrect
+          def self.example
+            TakeTurn.example(answer: answer)
+          end
+
+          def self.answer
+            Answer::Incorrect.example
+          end
+        end
       end
     end
   end

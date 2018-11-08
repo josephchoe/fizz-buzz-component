@@ -21,11 +21,11 @@ module FizzBuzzComponent
 
       module Incorrect
         def self.example
-          'Fizz'
+          '3'
         end
 
         def self.counter
-          11
+          3
         end
       end
 

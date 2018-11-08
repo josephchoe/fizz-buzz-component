@@ -21,7 +21,7 @@ context "Commands" do
       refute(take_turn_message.nil?)
     end
 
-    test "Written to fizz buzz command stream" do
+    test "Written to the fizz buzz command stream" do
       control_stream_name = Controls::StreamName::Game::Command.example(game_id: game_id)
 
       written_to_stream = writer.written?(take_turn_message) do |stream_name|

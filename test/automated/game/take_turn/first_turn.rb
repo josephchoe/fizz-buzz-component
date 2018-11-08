@@ -5,10 +5,10 @@ context "Game" do
     context "First Turn Is Taken" do
       game = Controls::Game::New.example
 
-      assert(game.counter.nil?)
       assert(game.started_time.nil?)
 
       counter = Controls::Counter.example
+      refute(counter == game.counter)
 
       time = Controls::Time::Effective::Raw.example
 

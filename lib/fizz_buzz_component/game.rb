@@ -3,12 +3,12 @@ module FizzBuzzComponent
     include Schema::DataStructure
 
     attribute :id, String
-    attribute :counter, Integer
+    attribute :counter, Integer, default: 1
     attribute :started_time, Time
     attribute :ended_time, Time
 
     def take_turn(counter, time)
-      if self.counter.nil?
+      if self.counter == 1
         self.started_time = time
       end
 

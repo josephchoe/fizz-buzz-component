@@ -3,46 +3,45 @@ module FizzBuzzComponent
     include Schema::DataStructure
 
     attribute :id, String
-    attribute :counter, Integer
+    attribute :counter, Integer, default: 0
     attribute :started_time, Time
-    attribute :finished_time, Time
+    attribute :ended_time, Time
 
-    def started?
-      !started_time.nil?
+    def take_turn(time)
+      self.counter += 1
+
+      if counter == 1
+        self.started_time = time
+      end
     end
 
-    def start(started_time)
-      self.counter = 1
+    def correct?(answer)
+      next_counter = counter + 1
 
-      self.started_time = started_time
-    end
-
-    def answer?(answer)
-      if counter % 3 == 0 && counter % 5 == 0
+      if next_counter % 3 == 0 && next_counter % 5 == 0
         answer == 'FizzBuzz'
-      elsif counter % 3 == 0
+
+      elsif next_counter % 3 == 0
         answer == 'Fizz'
-      elsif counter % 5 == 0
+
+      elsif next_counter % 5 == 0
         answer == 'Buzz'
+
       else
-        answer == counter.to_s
+        answer == next_counter.to_s
       end
     end
 
-    def answer(answered_time)
-      if counter < 100
-        self.counter += 1
-      else
-        self.finished_time = answered_time
-      end
+    def ended?
+      !ended_time.nil?
     end
 
-    def finished?
-      !finished_time.nil?
+    def over?
+      ended? || counter >= self.class.counter_limit
     end
 
-    def finish(finished_time)
-      self.finished_time = finished_time
+    def self.counter_limit
+      100
     end
   end
 end

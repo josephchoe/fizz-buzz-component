@@ -1,7 +1,7 @@
 module FizzBuzzComponent
   module Messages
     module Events
-      class Answered
+      class TurnRejected
         include Messaging::Message
 
         attribute :game_id, String
@@ -10,7 +10,6 @@ module FizzBuzzComponent
         attribute :answer, String
 
         attribute :time, String
-        attribute :processed_time, String
       end
     end
   end

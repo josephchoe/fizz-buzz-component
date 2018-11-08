@@ -1,13 +1,16 @@
 module FizzBuzzComponent
   module Messages
     module Events
-      class AnswerRejected
+      class TurnTaken
         include Messaging::Message
 
         attribute :game_id, String
+
         attribute :counter, Integer
         attribute :answer, String
+
         attribute :time, String
+        attribute :processed_time, String
       end
     end
   end

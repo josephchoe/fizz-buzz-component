@@ -1,19 +1,24 @@
 module FizzBuzzComponent
   module Controls
     module Game
-      def self.example(id=nil, counter: nil, initiated_time: nil, finished_time: nil)
+      def self.example(id=nil, next_counter: nil, counter: nil, started_time: nil, ended_time: nil)
         id ||= self.id
-        counter ||= Counter.example
-        initiated_time ||= Time::Effective::Raw.example
+        started_time ||= Time::Effective::Raw.example
+
+        if next_counter.nil?
+          counter ||= Counter.example
+        else
+          counter ||= next_counter - 1
+        end
 
         game = New.example
 
         game.id = id
         game.counter = counter
-        game.initiated_time = initiated_time
+        game.started_time = started_time
 
-        unless finished_time.nil?
-          game.finished_time = finished_time
+        unless ended_time.nil?
+          game.ended_time = ended_time
         end
 
         game
@@ -33,11 +38,11 @@ module FizzBuzzComponent
         end
       end
 
-      module Finished
+      module Ended
         def self.example
-          finished_time = Time::Effective::Raw.example
+          ended_time = Time::Effective::Raw.example
 
-          Game.example(finished_time: finished_time)
+          Game.example(ended_time: ended_time)
         end
       end
     end

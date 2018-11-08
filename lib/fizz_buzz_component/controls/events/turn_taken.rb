@@ -1,11 +1,11 @@
 module FizzBuzzComponent
   module Controls
     module Events
-      module Answered
-        def self.example(answer: nil, counter: nil, game_id: nil, time: nil, processed_time: nil, previous_message: nil, position: nil, global_position: nil)
-          answer ||= self.answer
-          counter ||= self.counter
+      module TurnTaken
+        def self.example(game_id: nil, counter: nil, answer: nil, time: nil, processed_time: nil, previous_message: nil, position: nil, global_position: nil)
           game_id ||= Game.id
+          counter ||= self.counter
+          answer ||= self.answer
           time ||= Time::Effective.example
           processed_time ||= Time::Processed.example
 
@@ -16,23 +16,23 @@ module FizzBuzzComponent
 
           stream_name = StreamName::Game.example(game_id: game_id)
 
-          answered = Messages::Events::Answered.new
+          turn_taken = Messages::Events::TurnTaken.new
 
-          answered.game_id = game_id
-          answered.answer = answer
-          answered.counter = counter
-          answered.time = time
-          answered.processed_time = processed_time
+          turn_taken.game_id = game_id
+          turn_taken.answer = answer
+          turn_taken.counter = counter
+          turn_taken.time = time
+          turn_taken.processed_time = processed_time
 
-          answered.metadata.stream_name = stream_name
-          answered.metadata.position = position
-          answered.metadata.global_position = global_position
+          turn_taken.metadata.stream_name = stream_name
+          turn_taken.metadata.position = position
+          turn_taken.metadata.global_position = global_position
 
           unless previous_message.nil?
-            answered.metadata.follow(previous_message.metadata)
+            turn_taken.metadata.follow(previous_message.metadata)
           end
 
-          answered
+          turn_taken
         end
 
         def self.answer
@@ -45,7 +45,7 @@ module FizzBuzzComponent
 
         module Initial
           def self.example
-            Answered.example(answer: answer, counter: counter, position: position)
+            TurnTaken.example(counter: counter, answer: answer, position: position)
           end
 
           def self.position

@@ -3,7 +3,8 @@ require 'try'
 
 require 'fizz_buzz_component/game'
 
-require 'fizz_buzz_component/messages/events/answered'
-require 'fizz_buzz_component/messages/events/answer_rejected'
+require 'fizz_buzz_component/messages/events/turn_taken'
+require 'fizz_buzz_component/messages/events/turn_rejected'
+require 'fizz_buzz_component/messages/events/game_ended'
 
 require 'fizz_buzz_component/projection'

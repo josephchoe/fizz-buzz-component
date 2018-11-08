@@ -8,12 +8,10 @@ module FizzBuzzComponent
     apply TurnTaken do |turn_taken|
       game.id ||= turn_taken.game_id
 
-      counter = turn_taken.counter
-
       turn_taken_time_iso8601 = turn_taken.time
       turn_taken_time = Clock.parse(turn_taken_time_iso8601)
 
-      game.take_turn(counter, turn_taken_time)
+      game.take_turn(turn_taken_time)
     end
 
     apply GameEnded do |game_ended|

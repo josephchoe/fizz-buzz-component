@@ -7,12 +7,12 @@ module FizzBuzzComponent
     attribute :started_time, Time
     attribute :ended_time, Time
 
-    def take_turn(counter, time)
+    def take_turn(time)
       if self.counter == 1
         self.started_time = time
       end
 
-      self.counter = counter
+      self.counter += 1
     end
 
     def correct?(answer)

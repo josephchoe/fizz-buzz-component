@@ -6,6 +6,7 @@ context "Projection" do
       turn_taken = Controls::Events::TurnTaken.example
 
       game = Controls::Game::New.example
+      counter = game.counter or fail
 
       Projection.(game, turn_taken)
 
@@ -16,10 +17,8 @@ context "Projection" do
           assert(game.id == game_id)
         end
 
-        test "Counter" do
-          counter = turn_taken.counter or fail
-
-          assert(game.counter == counter)
+        test "Counter is increased by one" do
+          assert(game.counter == counter + 1)
         end
 
         test "Time is converted and copied to started time" do

@@ -4,14 +4,13 @@ context "Projection" do
   context "Turn Taken" do
     turn_taken = Controls::Events::TurnTaken.example
 
-    counter = turn_taken.counter
-
-    game = Controls::Game.example(counter: counter - 1)
+    game = Controls::Game.example
+    counter = game.counter or fail
 
     Projection.(game, turn_taken)
 
-    test "Counter is set" do
-      assert(game.counter == counter)
+    test "Counter is increased by one" do
+      assert(game.counter == counter + 1)
     end
   end
 end

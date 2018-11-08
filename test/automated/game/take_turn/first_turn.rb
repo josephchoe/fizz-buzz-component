@@ -4,18 +4,16 @@ context "Game" do
   context "Take Turn" do
     context "First Turn Is Taken" do
       game = Controls::Game::New.example
+      counter = game.counter or fail
 
       assert(game.started_time.nil?)
 
-      counter = Controls::Counter.example
-      refute(counter == game.counter)
-
       time = Controls::Time::Effective::Raw.example
 
-      game.take_turn(counter, time)
+      game.take_turn(time)
 
-      test "Counter is set" do
-        assert(game.counter == counter)
+      test "Counter is increased by one" do
+        assert(game.counter == counter + 1)
       end
 
       test "Started time is set" do

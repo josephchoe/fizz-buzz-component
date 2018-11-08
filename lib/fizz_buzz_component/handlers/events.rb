@@ -35,6 +35,20 @@ module FizzBuzzComponent
       end
 
       handle TurnRejected do |turn_rejected|
+        game_id = turn_rejected.game_id
+
+        game, version = store.fetch(game_id, include: :version)
+
+        if game.ended?
+          logger.info(tag: :ignored) { "Event ignored (Event Type: #{turn_taken.type}, Game ID: #{game_id}, Counter: #{game.counter})" }
+          return
+        end
+
+        game_ended = GameEnded.follow(turn_rejected, exclude: [:counter, :answer])
+
+        stream_name = stream_name(game_id)
+
+        write.(game_ended, stream_name, expected_version: version)
       end
     end
   end

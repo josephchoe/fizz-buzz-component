@@ -5,9 +5,7 @@ module FizzBuzzComponent
         include Messaging::Message
 
         attribute :game_id, String
-
         attribute :answer, String
-
         attribute :time, String
       end
     end

@@ -3,6 +3,8 @@ require 'try'
 
 require 'fizz_buzz_component/game'
 
+require 'fizz_buzz_component/messages/commands/take_turn'
+
 require 'fizz_buzz_component/messages/events/turn_taken'
 require 'fizz_buzz_component/messages/events/turn_rejected'
 require 'fizz_buzz_component/messages/events/game_ended'

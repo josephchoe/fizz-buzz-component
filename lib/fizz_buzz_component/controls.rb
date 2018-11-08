@@ -12,6 +12,8 @@ require 'fizz_buzz_component/controls/counter'
 
 require 'fizz_buzz_component/controls/game'
 
+require 'fizz_buzz_component/controls/commands/take_turn'
+
 require 'fizz_buzz_component/controls/events/turn_taken'
 require 'fizz_buzz_component/controls/events/turn_rejected'
 require 'fizz_buzz_component/controls/events/game_ended'

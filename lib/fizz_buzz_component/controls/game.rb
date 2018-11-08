@@ -1,15 +1,10 @@
 module FizzBuzzComponent
   module Controls
     module Game
-      def self.example(id=nil, next_counter: nil, counter: nil, started_time: nil, ended_time: nil)
+      def self.example(id=nil, counter: nil, started_time: nil, ended_time: nil)
         id ||= self.id
+        counter ||= Counter.example
         started_time ||= Time::Effective::Raw.example
-
-        if next_counter.nil?
-          counter ||= Counter.example
-        else
-          counter ||= next_counter - 1
-        end
 
         game = New.example
 

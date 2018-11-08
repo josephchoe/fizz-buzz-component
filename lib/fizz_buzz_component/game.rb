@@ -3,32 +3,30 @@ module FizzBuzzComponent
     include Schema::DataStructure
 
     attribute :id, String
-    attribute :counter, Integer, default: 0
+    attribute :counter, Integer
     attribute :started_time, Time
     attribute :ended_time, Time
 
-    def take_turn(time)
-      self.counter += 1
-
-      if counter == 1
+    def take_turn(counter, time)
+      if self.counter.nil?
         self.started_time = time
       end
+
+      self.counter = counter
     end
 
     def correct?(answer)
-      next_counter = counter + 1
-
-      if next_counter % 3 == 0 && next_counter % 5 == 0
+      if counter % 3 == 0 && counter % 5 == 0
         answer == 'FizzBuzz'
 
-      elsif next_counter % 3 == 0
+      elsif counter % 3 == 0
         answer == 'Fizz'
 
-      elsif next_counter % 5 == 0
+      elsif counter % 5 == 0
         answer == 'Buzz'
 
       else
-        answer == next_counter.to_s
+        answer == counter.to_s
       end
     end
 

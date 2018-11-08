@@ -3,14 +3,9 @@ require_relative '../../automated_init'
 context "Projection" do
   context "Turn Taken" do
     context "First Turn Is Taken" do
-      game = Controls::Game::New.example
-
-      counter = game.counter or fail
-
-      assert(game.id.nil?)
-      assert(game.started_time.nil?)
-
       turn_taken = Controls::Events::TurnTaken.example
+
+      game = Controls::Game::New.example
 
       Projection.(game, turn_taken)
 
@@ -21,8 +16,10 @@ context "Projection" do
           assert(game.id == game_id)
         end
 
-        test "Counter is increased by one" do
-          assert(game.counter == counter + 1)
+        test "Counter" do
+          counter = turn_taken.counter or fail
+
+          assert(game.counter == counter)
         end
 
         test "Time is converted and copied to started time" do

@@ -2,17 +2,19 @@ require_relative '../../automated_init'
 
 context "Game" do
   context "Take Turn" do
-    counter = Controls::Counter.example
+    control_counter = Controls::Counter.example
 
-    game = Controls::Game.example(counter: counter)
-    assert(game.counter == counter)
+    game = Controls::Game.example(counter: control_counter)
+    assert(game.counter == control_counter)
+
+    counter = control_counter + 1
 
     time = game.started_time + 1
 
-    game.take_turn(time)
+    game.take_turn(counter, time)
 
-    test "Counter is increased by one" do
-      assert(game.counter == counter + 1)
+    test "Counter is set" do
+      assert(game.counter == counter)
     end
 
     test "Started time is not changed" do

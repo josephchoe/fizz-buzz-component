@@ -20,3 +20,7 @@ require 'fizz_buzz_component/store'
 
 require 'fizz_buzz_component/handlers/commands'
 require 'fizz_buzz_component/handlers/events'
+require 'fizz_buzz_component/handlers/output'
+
+require 'fizz_buzz_component/consumers'
+require 'fizz_buzz_component/start'

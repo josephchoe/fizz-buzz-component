@@ -22,7 +22,7 @@ context "Commands" do
     end
 
     test "Written to the fizz buzz command stream" do
-      control_stream_name = Controls::StreamName::Game::Command.example(game_id: game_id)
+      control_stream_name = Controls::StreamName::FizzBuzz::Command.example(game_id: game_id)
 
       written_to_stream = writer.written?(take_turn_message) do |stream_name|
         stream_name == control_stream_name

@@ -1,7 +1,7 @@
 module FizzBuzzComponent
   module Controls
     module StreamName
-      module Game
+      module FizzBuzz
         def self.example(game_id: nil)
           game_id ||= Controls::Game.id
 

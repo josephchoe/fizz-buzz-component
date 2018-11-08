@@ -14,7 +14,7 @@ module FizzBuzzComponent
           position ||= Position.example
           global_position ||= Position::Global.example
 
-          stream_name = StreamName::Game.example(game_id: game_id)
+          stream_name = StreamName::FizzBuzz.example(game_id: game_id)
 
           turn_taken = Messages::Events::TurnTaken.new
 

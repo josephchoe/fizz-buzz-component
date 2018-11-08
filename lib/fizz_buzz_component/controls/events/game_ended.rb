@@ -16,8 +16,6 @@ module FizzBuzzComponent
           game_ended = Messages::Events::GameEnded.new
 
           game_ended.game_id = game_id
-          game_ended.answer = answer
-          game_ended.counter = counter
           game_ended.time = time
 
           game_ended.metadata.stream_name = stream_name
